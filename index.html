@@ -1,0 +1,737 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Accessibility Jumpstart</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/olawar.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Accessibility dla programistów frontend</h1>
+					<hr>
+					<h2>Ola Warzecha</h2>
+					<small><a href="mailto:warzecha.ola@gmail.com">warzecha.ola@gmail.com</a> | <a href="http://github.com/olawar/accessibility-workshop">github.com/olawar/accessibility-workshop</a></small>
+				</section>
+
+				<section>
+					<h2>Spis treści</h2>
+					<ul>
+						<li class="fragment"><a href="#one">Czym jest dostępność i dlaczego jest ważna?</a></li>
+						<li class="fragment"><a href="#two">Regulacje prawne</a></li>
+						<li class="fragment"><a href="#three">Jak osoby niepełnosprawne korzystają z internetu?</a></li>
+						<li class="fragment"><a href="#four">WCAG 2.0 - omówienie wymogów i dobre praktyki</a></li>
+						<li class="fragment"><a href="#five">Audyty dostępności</a></li>
+						<li class="fragment"><a href="#six">Dostępność a systemy CMS</a></li>
+						<li class="fragment"><a href="#eight">Materiały i przydatne linki</a></li>
+					</ul>
+				</section>
+
+				<section id="one">
+				    <section>
+				        <h2>Czym jest dostępność i dlaczego jest ważna?</h2>
+				    </section>
+
+				    <section>
+				    	<p>Dostępność / accessibility to zapewnienie dostępu do prezentowanych treści <u>jak najszerszemu gronu użytkowników</u></p>
+				    </section>
+
+				    <section>
+				    	<h3>Uwzględnia różne ograniczenia:</h3>
+				    	<ul>
+				    		<li class="fragment">niepełnosprawność zmysłową</li>
+				    		<li class="fragment">niepełnosprawność ruchową</li>
+				    		<li class="fragment">upośledzenie umysłowe</li>
+				    		<li class="fragment">wiek i różnice wynikające z innej percepcji</li>
+				    		<li class="fragment">korzystania z innych urządzeń niż te, które chcielibyśmy widzieć jako domyślne</li>
+				    	</ul>
+				    </section>
+
+				    <section>
+				    	<h3>Skala zapotrzebowania na dostępne rozwiązania:</h3>
+				    	<ul>
+				    		<li class="fragment"><span class="attention">10-15%</span> - odsetek niepełnosprawnych ogółem w Polsce</li>
+				    		<li class="fragment"><span class="attention">1,8 mln</span> dysfunkcje wzroku z czego <span class="attention">100 tys.</span> to niewidomi</li>
+				    		<li class="fragment"><span class="attention">900 tys.</span> z dużym uszczerbkiem słuchu, a <span class="attention">50 tys.</span> to niesłyszący</li>
+				    		<li class="fragment"><span class="attention">6 mln</span> - niedosłuch w Polsce, <span class="attention">80 mln</span> w Europie i rośnie!</li>
+				    	</ul>
+				    	<small class="fragment">Źródła: <a href="http://www.rynekzdrowia.pl/Uslugi-medyczne/W-Polsce-zyje-az-1-8-mln-niewidomych-lub-slabowidzacych,155889,8.html">Rynek Zdrowia</a>, <a href="https://www.google.pl/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi8i9-vmqPQAhXBFCwKHSC-ANUQFgghMAA&url=http%3A%2F%2Fsamorzad.pap.pl%2Fpalio%2Fhtml.run%3F_Instance%3Dsamorzad_nowy.pap.pl%26_PageID%3D6%26_media_id%3D57272%26_filename%3DKK_2011_06.06_raport_o_niepelnosprawnych.pdf%26_mimetype%3Dapplication%2Fpdf%26_CheckSum%3D780010585&usg=AFQjCNH9iyEusFxMmurTwzezqyJHR42CzA&sig2=OKZRu8SY2YQoAmcwADWXYw&bvm=bv.138493631,d.bGg">Raport Kongresu Kobiet</a>, <a href="http://www.niepelnosprawni.gov.pl/p,122,zrodla-danych-o-osobach-niepelnosprawnych">BPRON</a></small>
+				    </section>
+
+				    <section>
+				    	<h3>Z dostępnych usprawnień korzysta każdy z nas:</h3>
+				    	<ul>
+				    		<li class="fragment">Responsive Web Design</li>
+				    		<li class="fragment">crossbrowser compatibility</li>
+				    		<li class="fragment">transkrypcja w wideo</li>
+				    		<li class="fragment">możliwość powiększenia tekstu</li>
+				    		<li class="fragment">a nawet - błędy podczas ładowania strony</li>
+				    	</ul>
+				    </section>
+				</section>
+
+				<section id="two">
+					<section>
+						<h2>Regulacje prawne: poziom odpowiadający AA z WCAG 2.0</h2>
+					</section>
+
+					<section>
+						<h3>Podmioty realizujące zadania publiczne</h3>
+						<p class="fragment"><u>Podstawa prawna:</u> Rozporządzenie w sprawie Krajowych Ram Interoperacyjności obowiązujące od czerwca 2015 - podmioty realizujące zadania publiczne</p>
+						<p class="fragment"><u>Obejmuje:</u> jednostki administracji państwowej - ministerstwa, urzędy, policję, straż pożarną, jednostki służby zdrowia, przyjmuje się także, że NGOsy</p>
+					</section>
+
+					<section>
+						<h3>Dostawcy telekomunikacyjni</h3>
+						<p class="fragment"><u>Postawa prawna:</u> Rozporządzenie Ministra Administracji i Cyfryzacji obowiązujące od 10 kwietnia 2016 roku</p>
+						<p class="fragment"><u>Obejmuje:</u> duże (Orange, Play, T-Mobile, Plus) i małe firmy telekomunikacyjne (dostawcy lokalni) oferujące dostęp do internetu / telefonu dla konsumentów</p>
+					</section>
+					
+				</section>
+
+				<section id="three">
+				    <section>
+						<h2>Jak osoby niepełnosprawne korzystają z internetu?</h2>
+					</section>
+
+					<section>
+					    <h3>Poruszanie się po stronie:</h3>
+						<ul>
+							<li class="fragment">"skanowanie" nagłówków - skróty czytnika</li>
+							<li class="fragment">przejście po interaktywnych elementach strony - linki, buttony, inputy i elementy z tabindex >= 0 - <span class="attention">Tab</span> i <span class="attention">Shift + Tab</span></li>
+							<li class="fragment">poruszanie się po wybranych elementach skrótami, np. listy, paragrafy, etc. - skróty czytnika</li>
+						</ul>
+						<small class="fragment">Więcej informacji na <a href="http://webaim.org/techniques/screenreader/">WebAIM</a></small>
+					</section>
+
+					<section>
+					    <h3>Wybór narzędzi</h3>
+						<ul>
+							<li class="fragment">czytniki software'owe: <a href="http://www.nvda.pl/">NVDA</a>, <a href="http://www.freedomscientific.com/Products/Blindness/JAWS">JAWS</a>, <a href="http://www.gwmicro.com/window-eyes/">Window-Eyes (współpraca z urządzeniami brailowskimi)</a>, VoiceOver (Apple)</li>
+							<li class="fragment">programy powiększające</li>
+							<li class="fragment">linijka brajlowska</li>
+							<li class="fragment">wsparcie w smartfonach</li>
+							<li class="fragment">klawiatura i jej wariacje!</li>
+						</ul>
+					</section>
+
+					<section>
+						<a title="By Sebastien.delorme (Own work) [CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0) or GFDL (http://www.gnu.org/copyleft/fdl.html)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3APlage-braille.jpg"><img width="512" alt="Plage-braille" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Plage-braille.jpg/512px-Plage-braille.jpg"/></a>
+					</section>
+				</section>
+
+				<section id="four">
+					<section>
+						<h2>Web Content Accessibility Guidelines 2.0</h2>
+						<p>Standard od W3C, podzielony na 3 poziomy</p>
+						<ul>
+							<li class="fragment">A - najbardziej podstawowy</li>
+							<li class="fragment">AA - optymalny</li>
+							<li class="fragment">AAA - najbardziej wymagający, rzadko spotykany</li>
+						</ul>
+						<p class="fragment attention">Uzyskanie certyfikacji na danym poziomie wymaga spełnienia <u>wszystkich</u> wytycznych z danego i niższych poziomów</p>
+						<small class="fragment"><a href="https://www.w3.org/WAI/WCAG20/quickref/">Skrócone zestawienie poziomów</a></small>
+					</section>
+
+					<section>
+						<h3>Techniki potrzebne do spełnienia tych wymogów</h3>
+						<ul>
+						    <li class="fragment">dobre przygotowanie UX i GUI</li>
+						    <li class="fragment">semantyczny HTML</li>
+							<li class="fragment">WAI-ARIA</li>
+				    		<li class="fragment">'odpowiedzialny' CSS i możliwość obejścia się bez niego</li>
+				    		<li class="fragment">dostosowany JS</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Dobre przygotowanie UX i GUI</h3>
+						<ul>
+							<li class="fragment">świadome przygotowanie logicznych treści, w tym alternatyw dla czytnika</li>	
+							<li class="fragment">przygotowanie projektów graficznych zgodnie z wymogami WCAG</li>				
+							<li class="fragment">komunikacja z deweloperami!</li>
+						<ul>
+					</section>
+
+					<section>
+						<h3>UX i GUI - spójna organizacja bloków treści w serwisie www</h3>
+
+						<div class="fragment" style="display: block; width: 90%; height: 60px; margin-left: auto; margin-right: auto; margin-top: 15px; margin-bottom: 15px; text-align: center; background-color: red">Nawigacja główna | wyszukiwarka</div>
+						<small class="fragment" style="display: block; width: 90%; position: relative; text-align: left; margin-left: auto; margin-right: auto">Ścieżka okruszków &#62; informuje gdzie jesteśmy</small>
+						<div class="fragment" style="display: block; width: 90%; height: 120px; margin-left: auto; margin-right: auto; margin-top: 15px; text-align: center; background-color: green">Główna treść</div>
+						<div class="fragment" style="display: block; width: 90%; height: 60px; margin-left: auto; margin-right: auto; margin-top: 15px; text-align: center; background-color: violet">Stopka</div>
+					</section>
+
+					<section>
+						<h3>Semantyczny HTML</h3>
+						<ul>
+							<li class="fragment">korzystanie ze znaczenia tagów HTML5, np. article, section, nav, header, main, footer, ul, itp.</li>
+							<li class="fragment">poprawność ze specyfikacją</li>
+							<li class="fragment">listy zagnieżdżone, odpowiednia kolejność focusu, korzystanie z tabindex, itp.</li>
+						<ul>
+					</section>
+
+					<section>
+						<h3>Atrybuty WAI-ARIA</h3>
+						<p class="fragment">Web Accessibility Initiative - Accessible Rich Internet Applications - pozwalają zwiększyć dostępność dynamicznych treści i elementów interfejsu użytkownika</p>
+						<p class="fragment">Definiją role, właściwości i stany elementów na stronie</p>
+					</section>
+
+					<section>
+						<h3>WAI-ARIA: role</h3>
+						<ul>
+							<li class="fragment">abstract</li>
+							<li class="fragment">widget: button, checkbox, dialog, tabpanel, checkbox</li>
+							<li class="fragment">document structure: article, document, list</li>
+							<li class="fragment">landmark - regiony nawigacyjne na stronie: banner, form, navigation, search</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>WAI-ARIA: właściwości i stany</h3>
+						<ul>
+							<li class="fragment">widget - do elementów UI: aria-haspopup, aria-label, aria-hidden, aria-expanded</li>
+							<li class="fragment">live region - dynamiczne zmiany w treści: aria-atomic, aria-relevant, aria-live</li>
+							<li class="fragment">drag and drop</li>
+							<li class="fragment">zależności: aria-controls, aria-labelledby, aria-describedby</li>
+						</ul>
+					</section>
+	
+					<section>
+						<h3>Przykład zastosowania - modal / okno dialogowe</h3>
+<pre><code data-trim>
+<div id="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-content">
+  <h2 id="modal-title">To jest modal</h2>
+  <p id="modal-content">Ten modal jest dostępny</p>
+</div>
+</pre></code>
+					</section>
+
+					<section>
+						<h3>Przykład zastosowania - taby / akordeon</h3>
+<pre><code data-trim>
+<ul id="tabs-controls" role="tablist">
+  <li role="presentation">
+    <a href="#content-1" id="tab-1" role="tab" aria-controls="content-1" aria-expanded aria-selected>Tab 1</a>
+  </li>
+  <li role="presentation">
+    <a href="#content-2" id="tab-2" role="tab" aria-controls="content-2" aria-expanded aria-selected>Tab 1</a>
+  </li>
+</ul>
+
+<div class="tabs-content-wrapper">
+  <div id="content-1" aria-labelledby="tab-1" role="tabpanel" aria-hidden>
+    <p>To jest treść pierwszego taba</p>
+  </div>
+  <div id="content-2" aria-labelledby="tab-2" role="tabpanel" aria-hidden>
+    <p>To jest treść drugiego taba</p>
+  </div>
+</div>
+</pre></code>
+					</section>
+
+
+					<section>
+						<h3>Przykład zastosowania - wielopoziomowa nawigacja</h3>
+<pre><code data-trim>
+<nav role="navigation">
+  <ul class="first-level">
+    <li><a href="#" aria-haspopup="true">O firmie</a>
+      <ul class="second-level">
+        <li><a href="#" aria-haspopup="true">Historia</a>
+          <ul class="third-level">
+            <li><a href="#">Rodzinne dziedzictwo</a></li>
+            <li><a href="#">Firma dziś</a>/li>
+          </ul>
+        </li>
+        <li><a href="#">Strategia</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Oferta</a></li>
+  </ul>
+</nav>
+</pre></code>
+					</section>
+
+					<section>
+						<h3>'Odpowiedzialny' CSS</h3>
+						<ul>
+							<li class="fragment">display:none, i visibility:hidden ukrywają tekst przed czytnikiem</li>
+							<li class="fragment">stosowane w animacjach opacity:0 wciąż jest dostępne dla czytnika!</li>
+							<li class="fragment">strona musi być dostępna również bez CSS</li>
+							<li class="fragment">ciekawostka: <a href="https://www.w3.org/TR/CSS2/aural.html">CSS2 Aural Style Sheets</a>, ale praktycznie bez wsparcia</li>
+						<ul>
+					</section>
+
+					<section>
+						<h3>Dostosowany JS</h3>
+						<ul>
+							<li class="fragment">przyjmuje się, że wszystkie czytniki obsługują JS</li>
+							<li class="fragment">niezbędne jest zakodowanie odpowiednich stanów ARIA przy zmianach elementów, np. aria-hidden, aria-expanded, aria-selected</li>
+							<li class="fragment">trzeba też pamiętać o dostępie z klawiatury oraz odpowiednim zarządzaniu focusem</li>
+						<ul>
+					</section>
+
+					<section>
+						<h3>Podział WCAG 2.0</h3>
+						<ol>
+						    <li class="fragment">Percepcja - sposób przedstawienia treści</li>
+							<li class="fragment">Funkcjonalność - używalność zastosowanych komponentów</li>
+							<li class="fragment">Zrozumiałość - zrozumiałe treści i obsługa</li>
+							<li class="fragment">Rzetelność - treść przygotowana tak, aby umożliwiała zastosowanie technologii wspomagających</li>
+						</ol>
+					</section>
+
+					<section>
+						<h3>1. Percepcja</h3>
+						<p class="fragment">
+							1.1 Tekst alternatywny dla informacji nietekstowych; np. alty dla obrazków
+						</p>
+						<p class="fragment">
+							1.2 Media zależne od czasu (audio / video) - zapewnienie alternatywy jak transkrypcji, języka migowego
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment">
+							1.3 Możliwość adaptacji - zakodowanie elementów tak, aby było możliwe poruszanie się skrótami czytnika i zrozumiale przedstawić treści w sposób uproszczony (np. bez CSS), nieodnoszenie się do właściwości zmysłowych (np. kolorów)
+						</p>
+					</section>
+
+					<section data-background="#f88e37" data-background-transition="zoom" class="has-light-background">
+						<p class="fragment">
+							1.4 Rozróżnialność
+						</p>
+						<ul>
+							<li class="fragment">
+						  	na poziomie AA wymagany kontrast podstawowy tekst vs tło to 4,5:1 (coraz rzadziej rekomenduje się osobną wersję serwisu z podwyższonym kontrastem, choć wciąż zdarzają się <a href="http://www.lazienki-krolewskie.pl/pl/dostepnosc">ciekawe realizacje</a>)
+							</li>
+							<li class="fragment">
+								powiększanie czcionek możliwe do 200% (rekomendowane są jednostki rem, em, %, px)
+							</li>
+							<li class="fragment">
+								brak tekstu w postaci grafiki bez alternatywy
+							</li>
+							<li class="fragment">
+								unikanie justowania tekstu do prawej
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<p class="fragment">
+							1.4 Rozróżnialność (c.d.)
+						</p>
+						<p class="fragment">
+							Należy też unikać zakłóceń ze strony multimediów - domyślnie wyłączone odtwarzanie wideo i dźwięku, możliwość sterowania z klawiatury
+						</p>
+					</section>
+
+					<section>
+						<h3>2. Funkcjonalność</h3>
+						<p class="fragment">
+						2.1 Dostępność z klawiatury
+						</p>
+						<ul>
+							<li class="fragment">
+								domyślne klawisze: Tab, Shift + Tab, Enter
+							</li>
+							<li class="fragment">
+								główna nawigacja - dodatkowe wsparcie jak zapewnienie poruszania się strzałkami - przykład na <a href="http://www.play.pl/">Play.pl</a>
+							</li>
+							<li class="fragment">
+								(powiązane z 1.3) uwzględnienie poruszania się skrótami czytnika: H - nagłówki, L - listy, G -grafiki, F - formularze
+							</li>
+							<li class="fragment">
+								brak pułapek dla klawiatury
+							</li>
+						</ul>
+					</section>
+
+					<section>					
+						<p class="fragment">
+						2.1 Dostępność z klawiatury (c.d.)
+						</p>
+						<p class="fragment">
+							Ważne jest odpowiednie zarządzanie focusem - np. przeniesienie focusu na otwarty modal i 'zamknięcie' go w nim - przykład z <a href="http://v4-alpha.getbootstrap.com/components/modal/">Bootstrapa</a>, albo korzystanie z tabindex do zapewnienia rekomendowanej kolejności poruszania się np. w formularzu
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment">
+							2.2 Zapewnienie wystarczająco dużo czasu na wykonanie akcji
+						</p>
+						<p class="fragment">
+							2.3 Ryzyko ataku padaczki - nie należy tworzyć treści, które migają więcej niż 3 razy na sekundę; wyjątki: miganie jest  niewielkie, błyski mają mały kontrast i nie zawierają dużo czerwieni.
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment">
+							2.4 Nawigacja po stronie
+						</p>
+						<ul>
+							<li class="fragment">
+								&#60;title&#62; - powinien podawać o czym jest dana strona
+							</li>
+							<li class="fragment">
+								tylko jeden &#60;h1&#62; na stronie, również bezpośrednio odnoszący się do jej najważniejszej zawartości
+							</li>
+							<li class="fragment">
+								skiplinki (pomijanie bloków treści)- ułatwiają nawigację po stronie; przykład: <a href="http://dostepnestrony.pl/artykul/wcag-2-0-w-skrocie/"> - nawiguj klawiszem Tab</a>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+					    <h3>Jak napisać skiplinki?</h3>
+<pre><code data-trim>
+<ul class="skiplinks">
+  <li><a href="#header">Przejdź do menu</a></li>
+  <li><a href="#main-search">Przejdź do wyszukiwarki</a></li>
+  <li><a href="#main-container">Przejdź do treści</a></li>
+  <li><a href="#footer">Przejdź do stopki</a></li>
+</ul>
+
+<style>
+  .skiplinks {
+    list-style: none;
+  }
+  .skiplinks a {
+    display: inline-block;
+    padding: 16px;
+    border: 3px solid orange;
+    position: absolute;
+    left: 0;
+    top: -1000px;
+    width: 250px;
+    z-index: 100;
+  }
+  .skiplinks a:focus {
+    top: 0;
+  }
+</style>
+</pre></code>						
+					</section>
+
+					<section>
+						<p class="fragment">
+							2.4 Nawigacja po stronie
+						</p>
+
+						<ul>
+							<li class="fragment">
+								breadcrumbs / ścieżka okruszków - podają lokalizację w serwisie (<a href="http://allegro.pl/osobowe-aston-martin-18091">przykład</a>)
+							</li>
+							<li class="fragment">
+								logiczna struktura nagłówkowa bez przeskakiwania między poziomami
+							</li>
+							<li class="fragment">
+								widoczny focus (<a href="http://www.orange.pl">przykład</a>)
+							</li>
+							<li class="fragment">
+								cel linku w kontekście - ukryty, bardziej opisowy tekst dla czytnika np. w guzikach typu "szczegóły" lub "zobacz więcej", a także jasna informacja o odnośnikach do pobrania
+							</li>			
+						</ul>
+		
+					</section>
+
+					<section>
+					    <h3>Jak ukryć tekst dla czytnika?</h3>
+<pre><code data-trim>
+<button>Szczegóły <span class="screen-reader-only">oferty z telefonem Huawei P9</span></button>
+
+<style>
+ .screen-reader-only {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+  }
+</style>
+</pre></code>
+
+<small class="fragment">Frameworki często oferują gotowe rozwiązania - Bootstrap "sr-only", Foundation "show-for-sr"</small>
+
+<small class="attention fragment">Nie należy ukrywać w ten sposób dużych bloków treści, ze względu na penalizację w wyszukiwarkach</small>						
+					</section>
+
+					<section>
+						<h3>3. Zrozumiałość</h3>
+						<p class="fragment">
+						3.1 Zrozumiałe treści - poprawny atrybut lang dla strony i elementów, prosty język, streszczenie dla skomplikowanych diagramów
+						</p>
+						<p class="fragment">
+						3.2 Przewidywalność - spójna konstrukcja powtarzających się komponentów (nawigacja, formularze), brak nagłych zmian kontekstu przy np. focusie, zaakcentowanie zmiany treści, gdy nie jest to oczywiste
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment">
+						3.3 Pomoc przy wprowadzaniu danych - poprawnie zakodowane formularze! 
+						</p>
+						<ul>
+							<li class="fragment">
+								stosowanie &#60;label&#62; do &#60;input&#62; lub innej formy podania instrukcji
+							</li>
+							<li class="fragment">
+								gdy &#60;input&#62; dostaje focus &#60;label&#62; wciąż musi być dostępny dla czytnika
+							</li>
+							<li class="fragment">
+								instrukcje i komunikaty błędów muszą być zrozumiałe oraz podane w zróżnicowany sposób
+							</li>
+							<li class="fragment">
+								customowy &#60;select&#62; też musi być dostępny z klawiatury i dla czytnika
+							</li>
+						</ul>
+						<small class="fragment"><a href="https://medium.com/salesforce-ux/7-things-every-designer-needs-to-know-about-accessibility-64f105f0881b#.fq3qb2y23">Ciekawe opracowanie, punkt 2</a> i <a href="http://dlafirm.play.pl/">przykład formularza z wyraźnymi komunikatami błędów</a></small>
+					</section>
+
+					<section>
+						<h3>4. Rzetelność</h3>
+						<p class="fragment attention">
+						  Poprawny kod!
+						</p>
+						<p class="fragment">
+						  Nie wolno zapomnieć o:
+						</p>
+						<ul>
+							<li class="fragment">
+								deklaracji html
+							</li>
+							<li class="fragment">
+								atrybucie &#60;title&#62; innym dla każdej podstrony
+							</li>
+							<li class="fragment">
+								&#60;h1&#62; - jeden na stronie, w ostateczności może być dostępny tylko dla czytnika
+							</li>
+							<li class="fragment">
+								logicznej strukturze nagłówków - stylowanie po klasach a nie tylko elementach
+							</li>
+							<li class="fragment">
+								logicznych altach obrazków - odzwieciedlających ich role
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<p class="fragment">
+						  Uważaj też na:
+						</p>
+						<ul>
+							<li class="fragment">
+								stosowanie pseudolinków np. &#60;span&#62; zamiast &#60;a&#62; i problematyczne linki - puste, zagnieżdżone w sobie, do tego samego obok siebie
+							</li>
+							<li class="fragment">
+								reset CSS - na 99% wyłączy defaultowy focus. Zapewnij alternatywę!
+							</li>
+							<li class="fragment">
+								w jaki sposób linkujesz do materiałów do pobrania i czy pliki PDF są dostępne
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<p class="fragment">
+						  Uważaj też na (c.d.):
+						</p>
+						<ul>
+							<li class="fragment">
+								zapewnienie dostępności takim elementom UI jak: tooltipy, dropdowny / akordeony, taby, modale, slidery / karuzele, wielopoziomowe nawigacje
+							</li>
+							<li class="fragment">
+								informowanie o zmianach w dynamicznych elementach strony (aria-live)
+							</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section id="five">
+					<section>
+				        <h2>Audyty dostępności</h2>
+				    </section>
+
+				    <section>
+				        <h3>Narzędzia audytora</h3>
+				        <p class="fragment">Automatyczny walidator:</p>
+				        <ul>
+				        	<li class="fragment"><a href="http://wave.webaim.org/">WAVE (Web Accessibility Evaluation Tool)</a> - też jako wtyczka do Firefoxa i Chrome</li>
+				        	<li class="fragment">wtyczka do Chrome 'Accessibility Developer Tools'</li>
+				        	<li class="fragment"><a href="http://www.tawdis.net/ingles.html?lang=en">TAWDIS</a></li>
+				        </ul>
+				        <p class="fragment">Analiza kontrastu - <a href="https://www.paciellogroup.com/resources/contrastanalyser/">Colour Contrast Analyser</a></p>
+				        <p class="fragment">Czytnik</p>
+				        <p class="fragment">Wsparcie niepełnosprawnego testera</p>
+				    </section>
+
+				    <section>
+				        <h3>Wynik audytu</h3>
+				        <p class="fragment">Raport ułożony punkt po punkcie zgodnie z dokumentacją WCAG - <a href="http://wcag20.widzialni.org/wcag-20-zasada-1-percepcja,m,mg,165">np. jak w opracowaniu na stronie Fundacji Widzialni</a></p>
+				    </section>
+				</section>
+
+				<section id="seven">
+					<section>
+				        <h2>Dostępność a systemy CMS</h2>
+
+				        <p class="fragment">Problem jest złożony i zależy od wybranego systemu, ale generalnie prace w kierunku zapewnienia dostępności trwają - więcej informacji <a href="http://ncdae.org/resources/factsheets/cms.php">tutaj</a></p>
+				        <p class="fragment">Szczególnie drażliwe kwestie: brak wsparcia dla klawiatury, strony na tabelkach, brak możliwości wprowadzenia poprawek, brak wsparcia dla WAI-ARIA</p>
+				    </section>
+
+				    <section>
+				        <h3>Wordpress</h3>
+
+				        <p class="fragment">Społeczność pracuje nad rozszerzeniem dostępności Wordpressa, materiały:</p>
+				        <ul>
+					        <li class="fragment"><a href="https://make.wordpress.org/accessibility/handbook/quick-start-guide/">jak pisać dostępnie w WP</a></li>
+					        <li class="fragment"><a href="https://make.wordpress.org/accessibility/handbook/testing-and-development-tools/wp-accessibility-plugin/">plugin dla użytkowników nietechnicznych</a></li>
+					        <li class="fragment"><a href="https://make.wordpress.org/accessibility/useful-tools/">rekomendowane narzędzia WP</a> i <a href="https://make.wordpress.org/accessibility/handbook/testing-and-development-tools/">rekomendowane narzędzia dodatkowe</a></li>
+					    </ul>	
+				    </section>
+
+				</section>
+
+				<section id="eight">
+					<section>
+				        <h2>Materiały i przydatne linki</h2>
+				    </section>
+
+				    <section>
+						<h3>Źródła, materiały i&nbsp;przykłady</h3>
+						<ul>
+							<li>
+								<a href="http://fdc.org.pl/wcag2/">Dokumentacja WCAG 2.0 (po polsku)</a>
+							</li>
+							<li>
+								<a href="https://www.w3.org/WAI/WCAG20/quickref/">How to Meet WCAG 2.0</a>
+							</li>
+							<li>
+								<a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html">Understanding WCAG 2.0</a>
+							</li>
+							<li>
+								<a href="https://www.w3.org/TR/WCAG20-TECHS/">Techniques for WCAG 2.0</a>
+							</li>
+							<li>
+								<a href="https://w3c.github.io/html-aria/">ARIA in HTML</a>
+							</li>
+						</ul>
+					</section>
+
+
+					<section>
+						<h3>Źródła, materiały i&nbsp;przykłady (c.d.)</h3>
+						<ul>						
+							<li>
+								<a href="http://wcag20.widzialni.org/index.php">WCAG 2.0 - opracowanie Fundacji Widzialni</a>
+							</li>
+							<li>
+								<a href="http://www.widzialni.org/container/Badanie-dostepnosci-stron-www-w-oparciu-o-WCAG.pdf">Badanie dostępności strony www w oparciu o WCAG (pdf)</a>
+							</li>
+							<li>
+								<a href="http://www.widzialni.org/container/podrecznik6-www.pdf">WCAG 2.0 Podręcznik Dobrych Praktyk (pdf)</a>
+							</li>
+							<li>
+								<a href="http://dostepnestrony.pl/artykul/wcag-2-0-w-skrocie/">Dostępne strony - WCAG 2.0 w skrócie</a>
+							</li>
+							<li>
+								<a href="http://internet-bez-barier.com/">Internet bez barier - blog</a>
+							</li>
+							<li>
+								<a href="http://www.integracja.org/">Dostępna strona - Fundacja Integracja</a>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Praktyczne przykłady dostępnych komponentów</h3>
+						<ul>
+							<li>
+								<a href="http://webaim.org/">WebAIM - świetne źródło opracowań i przykładów</a>
+							</li>
+							<li>
+								<a href="http://heydonworks.com/practical_aria_examples/">Practical ARIA Examples</a>
+							</li>
+							<li>
+								<a href="https://adobe-accessibility.github.io/Accessible-Mega-Menu/">Accessible Mega Menu</a>
+							</li>
+							<li>
+								<a href="http://www.oaa-accessibility.org/examplep/accordian2/">Dostępny akordeon</a>
+							</li>
+							<li>
+								<a href="http://accessibility.athena-ict.com/aria/examples/tabpanel2.shtml">Dostępne taby</a>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Narzędzia</h3>
+						<ul>
+							<li>
+								<a href="http://www.aremycoloursaccessible.com/">Are My Colours Accessible</a>
+							</li>
+							<li>
+								<a href="http://colorsafe.co/">Generator dostępnych palet kolorystycznych</a>
+							</li>
+							<li>
+				        	    <a href="https://www.paciellogroup.com/resources/contrastanalyser/">Colour Contrast Analyser</a>
+				        	</li>
+							<li>
+							    <a href="http://wave.webaim.org/">WAVE (Web Accessibility Evaluation Tool)</a>
+							</li>
+				        	<li>
+				        	    <a href="http://www.tawdis.net/ingles.html?lang=en">TAWDIS</a>
+				        	</li>
+				        	<li>
+							     <a href="http://www.nvda.pl/">NVDA</a>, <a href="http://www.freedomscientific.com/Products/Blindness/JAWS">JAWS</a>, <a href="http://www.gwmicro.com/window-eyes/">Window-Eyes</a> 
+							</li>
+						</ul>
+					</section>
+				</section>
+
+				<section style="text-align: left;">
+					<h2>Powodzenia w tworzeniu dostępnych stron!</h2>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>s
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
