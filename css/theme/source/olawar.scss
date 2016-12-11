@@ -36,14 +36,23 @@ $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1.0em;
 
-section.has-light-background {
-	&, h1, h2, h3, h4, h5, h6 {
-		color: #030b28;
+.light-bg {
+
+	* {
+		color: $backgroundColor;
+	}
+
+	a {
+		color: #550000 !important;
+
+		&:hover {
+		    color: lighten( #550000, 15% ) !important;
+		}
 	}
 }
 
 .attention {
-	color:  #fa9441; 
+	color:  #F14020;
 }
 
 
